@@ -4,6 +4,16 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Crime {
+    public boolean isRequiresPolice() {
+        return mRequiresPolice;
+    }
+
+    public void setRequiresPolice(boolean requiresPolice) {
+        mRequiresPolice = requiresPolice;
+    }
+
+    private boolean mRequiresPolice;
+
     private UUID mId;
     public UUID getId() {
         return mId;
