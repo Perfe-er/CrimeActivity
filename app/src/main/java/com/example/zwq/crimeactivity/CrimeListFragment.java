@@ -1,5 +1,6 @@
 package com.example.zwq.crimeactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CrimeListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
+    private static int mCrimeIndex;
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,
@@ -33,11 +35,21 @@ public class CrimeListFragment extends Fragment {
 
     }
 
+    public void onResume(){
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
+        if(mAdapter==null){
         mAdapter = new CrimeAdapter(crimes);
         mCrimeRecyclerView.setAdapter(mAdapter);
+        }else {
+            //mAdapter.notifyDataSetChanged();
+            mAdapter.notifyItemChanged(mCrimeIndex);
+        }
     }
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -54,7 +66,9 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view){
-            Toast.makeText(getActivity(),mCrime.getTitle()+"clicked",Toast.LENGTH_SHORT).show();
+            Intent intent=MainActivity.newIntent(getActivity(),mCrime.getId());
+            mCrimeIndex=getAdapterPosition();
+            startActivity(intent);
         }
 
         public void bind(Crime crime){
