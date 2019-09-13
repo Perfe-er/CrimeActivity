@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.zip.Inflater;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -62,8 +63,8 @@ public class CrimeListFragment extends Fragment {
             mDateTextView.setText(mCrime.getDate().toString());
         }
 
-    }
 
+    }
     private class requirePoliceCrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mTitleTextView;
         private TextView mDateTextView;
@@ -92,21 +93,41 @@ public class CrimeListFragment extends Fragment {
 
     }
 
-    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
+    private class CrimeAdapter extends RecyclerView.Adapter {
         private List<Crime> mCrimes;
         public CrimeAdapter(List<Crime> crimes) {
             mCrimes = crimes;
         }
         @Override
-        public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new CrimeHolder(layoutInflater, parent);
+        public int getItemViewType(int position){
+            if(mCrimes.get(position).isRequiresPolice()){
+                return 1;
+            }else{
+                return 0;
+            }
         }
+        @NonNull
         @Override
-        public void onBindViewHolder(CrimeHolder holder, int position) {
-            Crime crime=mCrimes.get(position);
-            holder.bind(crime);
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i){
+            LayoutInflater layoutInflater=LayoutInflater.from(getActivity());
+            if(i == 1){
+                return new requirePoliceCrimeHolder(layoutInflater,viewGroup);
+            }else{
+                return new CrimeHolder(layoutInflater,viewGroup);
+            }
         }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            if(holder instanceof CrimeHolder){
+                Crime crime=mCrimes.get(position);
+                ((CrimeHolder)holder).bind(crime);
+            }else if (holder instanceof requirePoliceCrimeHolder){
+                Crime crime=mCrimes.get(position);
+                ((requirePoliceCrimeHolder)holder).bind(crime);
+            }
+        }
+
         @Override
         public int getItemCount() {
             return mCrimes.size();
