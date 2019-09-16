@@ -53,4 +53,24 @@ public class Crime {
         mDate=new Date();
     }
 
+    public int getHour() {
+        return mHour;
+    }
+
+    public void setHour(int hour) {
+        mHour = hour;
+    }
+
+    private int mHour;
+
+    public int getMinute() {
+        return mMinute;
+    }
+
+    public void setMinute(int minute) {
+        mMinute = minute;
+    }
+
+    private int mMinute;
+
 }
