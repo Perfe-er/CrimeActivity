@@ -39,15 +39,15 @@ public class Crime {
 
     private Date mDate;
 
-    public Boolean getSolved() {
+    public boolean getSolved() {
         return mSolved;
     }
 
-    public void setSolved(Boolean solved) {
+    public void setSolved(boolean solved) {
         mSolved = solved;
     }
 
-    private Boolean mSolved;
+    private boolean mSolved;
     public Crime(){
         mId=UUID.randomUUID();
         mDate=new Date();

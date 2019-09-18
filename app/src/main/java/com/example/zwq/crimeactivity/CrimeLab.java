@@ -1,14 +1,26 @@
 package com.example.zwq.crimeactivity;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import database.CrimeDbSchema.CrimeBaseHelper;
+
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
     private List<Crime> mCrimes;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
+
+    public void addCrime(Crime c) {
+        mCrimes.add(c);
+    }
+    public void removeCrime(Crime c){
+        mCrimes.remove(c);
+    }
 
     public static CrimeLab get(Context context){
         if(sCrimeLab==null){
@@ -17,17 +29,10 @@ public class CrimeLab {
         return sCrimeLab;
     }
     private CrimeLab(Context context){
-        mCrimes=new ArrayList<>();//实例化
-
-        for (int i = 0; i < 100; i++) {
-            Crime crime = new Crime();
-            crime.setTitle("Crime #" + i);
-            crime.setSolved(i % 2 == 0); // Every other one
-            crime.setRequiresPolice(i % 10==0);
-            mCrimes.add(crime);
-        }
-
-    };
+        mContext=context.getApplicationContext();
+        mDatabase=new CrimeBaseHelper(mContext).getWritableDatabase();
+        mCrimes=new ArrayList<>();
+    }
     public List<Crime> getCrimes(){
         return mCrimes;
     }
