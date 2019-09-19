@@ -4,16 +4,6 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Crime {
-    public boolean isRequiresPolice() {
-        return mRequiresPolice;
-    }
-
-    public void setRequiresPolice(boolean requiresPolice) {
-        mRequiresPolice = requiresPolice;
-    }
-
-    private boolean mRequiresPolice;
-
     private UUID mId;
     public UUID getId() {
         return mId;
@@ -49,28 +39,11 @@ public class Crime {
 
     private boolean mSolved;
     public Crime(){
-        mId=UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+    public Crime(UUID id){
+        mId=id;
         mDate=new Date();
     }
-
-    public int getHour() {
-        return mHour;
-    }
-
-    public void setHour(int hour) {
-        mHour = hour;
-    }
-
-    private int mHour;
-
-    public int getMinute() {
-        return mMinute;
-    }
-
-    public void setMinute(int minute) {
-        mMinute = minute;
-    }
-
-    private int mMinute;
 
 }
