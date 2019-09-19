@@ -131,8 +131,8 @@ public class CrimeListFragment extends Fragment {
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.setCrimes(crimes);
-            //mAdapter.notifyDataSetChanged();
-            mAdapter.notifyItemChanged(mCrimeIndex);
+            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyItemChanged(mCrimeIndex);
         }
         if (crimes.size()!=0){
             mNullCrimeListTextView.setVisibility(View.INVISIBLE);
