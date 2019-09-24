@@ -169,7 +169,7 @@ public class CrimeListFragment extends Fragment {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(mCrime.getDate().toString());
-            mSolveImageView.setVisibility(crime.getSolved() ? View.VISIBLE : View.GONE);
+            mSolveImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
 
 

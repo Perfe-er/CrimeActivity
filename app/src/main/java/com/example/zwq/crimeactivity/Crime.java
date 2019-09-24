@@ -4,7 +4,27 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Crime {
+    private String mPhone;
+
+    public String getPhone() {
+        return mPhone;
+    }
+
+    public void setPhone(String mPhone) {
+        this.mPhone = mPhone;
+    }
+
     private UUID mId;
+
+    public String getSuspect() {
+        return mSuspect;
+    }
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
+    }
+
+    private String mSuspect;
+
     public UUID getId() {
         return mId;
     }
@@ -29,7 +49,8 @@ public class Crime {
 
     private Date mDate;
 
-    public boolean getSolved() {
+
+    public boolean isSolved() {
         return mSolved;
     }
 
@@ -38,6 +59,7 @@ public class Crime {
     }
 
     private boolean mSolved;
+
     public Crime(){
         this(UUID.randomUUID());
     }
