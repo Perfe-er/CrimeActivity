@@ -16,11 +16,16 @@ public class Crime {
 
     private UUID mId;
 
+
     public String getSuspect() {
         return mSuspect;
     }
     public void setSuspect(String suspect) {
         mSuspect = suspect;
+    }
+
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
     }
 
     private String mSuspect;
