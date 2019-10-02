@@ -17,7 +17,7 @@
     <string name="crime_report_no_suspect">there is no suspect.</string>
     <string name="crime_report_suspect">the suspect is %s.</string>
     <string name="crime_report_subject">CriminalIntent Crime Report</string>
-    <string name="crime_call_suspect_text">Call Suspect</string>
+<!--    <string name="crime_call_suspect_text">Call Suspect</string>-->
     <string name="send_report">Send crime report via</string>
     <plurals name="subtitle_plural">
         <item quantity="one">%1$d crime</item>
