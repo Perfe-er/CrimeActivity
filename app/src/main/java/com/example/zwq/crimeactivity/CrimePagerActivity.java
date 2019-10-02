@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class CrimePagerActivity extends AppCompatActivity {
+public class CrimePagerActivity extends AppCompatActivity implements CrimeFragment.Callbacks{
     private ViewPager mViewPager;
     private List<Crime> mCrimes;
     private Button btn_first;
@@ -82,6 +82,9 @@ public class CrimePagerActivity extends AppCompatActivity {
         }
 
 
+    }
+    @Override
+    public void onCrimeUpdated(Crime crime){
     }
 
 }

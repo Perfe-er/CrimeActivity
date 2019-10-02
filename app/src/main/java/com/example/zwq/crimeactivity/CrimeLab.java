@@ -65,8 +65,9 @@ public class CrimeLab {
         return sCrimeLab;
     }
     private CrimeLab(Context context){
-        mContext=context.getApplicationContext();
-        mDatabase=new CrimeBaseHelper(mContext).getWritableDatabase();
+        mContext = context.getApplicationContext();
+        mDatabase = new CrimeBaseHelper(mContext)
+                .getWritableDatabase();
 
     }
 
