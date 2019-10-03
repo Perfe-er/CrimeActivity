@@ -4,6 +4,11 @@
     <string name="crime_title_label">Title</string>
     <string name="crime_details_label">details</string>
     <string name="crime_solved_label">solved</string>
+    <string name="crime_photo_button_description">Take photo of crime scene</string>
+    <string name="crime_photo_no_image_description">
+           Crime scene photo (not set)
+    </string>
+    <string name="crime_photo_image_description">Crime scene photo (set)</string>
     <string name="date_picker_title">date_of_crime</string>
     <string name="new_crime">New Crime</string>
     <string name="show_subtitle">Show Subtitle</string>
@@ -23,4 +28,5 @@
         <item quantity="one">%1$d crime</item>
         <item quantity="other">%1$d crimes</item>
     </plurals>
+
 </resources>
